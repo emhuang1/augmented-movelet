@@ -461,7 +461,7 @@ minDiscrep <- function(newMovelet, activity.training, moveletPoints, distOption,
           x.discrep <- sqrt(sum((newMovelet$x - Movelet$x)^2))
           y.discrep <- sqrt(sum((newMovelet$y - Movelet$y)^2))
           z.discrep <- sqrt(sum((newMovelet$z - Movelet$z)^2))
-          activity.discrep[j] <- mean(x.discrep, y.discrep, z.discrep)  
+          activity.discrep[j] <- mean(c(x.discrep, y.discrep, z.discrep))  
         } else {
           activity.discrep[j] <- sqrt(sum((newMovelet$mag - Movelet$mag)^2))
         }
@@ -474,7 +474,7 @@ minDiscrep <- function(newMovelet, activity.training, moveletPoints, distOption,
           x.discrep <- cor(newMovelet$x, Movelet$x)
           y.discrep <- cor(newMovelet$y, Movelet$y)
           z.discrep <- cor(newMovelet$z, Movelet$z)
-          activity.discrep[j] <- mean(x.discrep, y.discrep, z.discrep)  
+          activity.discrep[j] <- mean(c(x.discrep, y.discrep, z.discrep))  
         } else {
           Movelet <- activity.training[j:(j+moveletPoints-1),]
           activity.discrep[j] <- cor(newMovelet$mag, Movelet$mag)
@@ -493,7 +493,7 @@ minDiscrep <- function(newMovelet, activity.training, moveletPoints, distOption,
         x.discrep <- sqrt(sum((newMovelet$x[1:n] - Movelet$x)^2))
         y.discrep <- sqrt(sum((newMovelet$y[1:n] - Movelet$y)^2))
         z.discrep <- sqrt(sum((newMovelet$z[1:n] - Movelet$z)^2))
-        activity.discrep <- mean(x.discrep, y.discrep, z.discrep)  
+        activity.discrep <- mean(c(x.discrep, y.discrep, z.discrep))  
       } else {
         activity.discrep <- sqrt(sum((newMovelet$mag[1:n] - Movelet$mag)^2))
       }
@@ -503,7 +503,7 @@ minDiscrep <- function(newMovelet, activity.training, moveletPoints, distOption,
         x.discrep <- cor(newMovelet$x[1:n], Movelet$x)
         y.discrep <- cor(newMovelet$y[1:n], Movelet$y)
         z.discrep <- cor(newMovelet$z[1:n], Movelet$z)
-        activity.discrep <- mean(x.discrep, y.discrep, z.discrep)  
+        activity.discrep <- mean(c(x.discrep, y.discrep, z.discrep))  
       } else {
         activity.discrep <- cor(newMovelet$mag[1:n], Movelet$mag)
       }
